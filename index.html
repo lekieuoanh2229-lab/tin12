@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sơn Hải Dị Thư</title>
+
+<style>
+:root {
+  --paper: #eee5cd;
+  --green: #343b25;
+  --gold: #c6a35b;
+  --red: #7e3028;
+  --ink: #24251b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wrap {
+  width: min(1120px, 92%);
+  margin: auto;
+}
+
+/* THANH ĐIỀU HƯỚNG */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(36, 39, 27, .96);
+  color: var(--paper);
+  border-bottom: 1px solid var(--gold);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 0;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+.menu {
+  display: flex;
+  gap: 24px;
+}
+
+.menu a:hover {
+  color: var(--gold);
+}
+
+.button {
+  display: inline-block;
+  padding: 11px 20px;
+  color: #fff3d8;
+  background: var(--red);
+  border: 1px solid var(--gold);
+  transition: .2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+
+/* TRANG CHỦ */
+
+.hero {
+  min-height: 650px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 45px;
+  padding: 55px 0;
+}
+
+.kicker {
+  color: var(--red);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 20px 0 5px;
+  color: var(--green);
+  font-size: clamp(45px, 7vw, 88px);
+  line-height: 1.05;
+}
+
+h1 span {
+  color: var(--red);
+  font-style: italic;
+}
+
+.old-title {
+  color: #766a4e;
+  font-style: italic;
+}
+
+.old-title strong {
+  color: var(--red);
+}
+
+.lead {
+  max-width: 550px;
+  color: #5f5a48;
+  font-size: 17px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.cover {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+  border: 8px solid #d8c8a4;
+  outline: 1px solid #8f7b50;
+  box-shadow: 12px 12px 0 #9d8a5a55;
+}
+
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.cover-label {
+  position: absolute;
+  right: 0;
+  bottom: 25px;
+  padding: 12px;
+  color: #fff0c8;
+  background: var(--red);
+  border: 2px solid var(--gold);
+  writing-mode: vertical-rl;
+  letter-spacing: 3px;
+}
+
+/* CÁC PHẦN NỘI DUNG */
+
+section.content {
+  padding: 70px 0;
+  border-top: 1px solid #9c8d674d;
+}
+
+section.dark {
+  color: var(--paper);
+  background: var(--green);
+}
+
+h2 {
+  margin: 8px 0 15px;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.25;
+}
+
+.description {
+  max-width: 750px;
+  color: #746c58;
+}
+
+.dark .description {
+  color: #d2c9ac;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 35px;
+  align-items: start;
+}
+
+.story {font-size: 17px;
+}
+
+.details {
+  padding: 22px;
+  background: #e6dac0;
+  border: 1px solid #b5a478;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid #c8b994;
+}
+
+.detail:last-child {
+  border-bottom: none;
+}
+
+.detail span {
+  color: #71674f;
+}
+
+.detail strong {
+  text-align: right;
+}
+
+/* NHÂN VẬT */
+
+.characters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.character {
+  padding: 10px;
+  color: var(--ink);
+  background: #e6dac0;
+  border: 1px solid #b7a77c;
+}
+
+.character img {
+  display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.character h3 {
+  margin: 12px 8px 3px;
+  font-size: 22px;
+}
+
+.character p {
+  margin: 0 8px 12px;
+  color: #6c634e;
+}
+
+.tag {
+  margin: 12px 8px 0;
+  color: var(--red);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/* TRANG TRUYỆN */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  align-items: start;
+}
+
+.page {
+  margin: 0;
+  padding: 10px;
+  background: #e6dac0;
+  border: 1px solid #b7a77c;
+}
+
+.page img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.page figcaption {
+  padding: 10px 4px;
+  color: #6c634e;
+}
+
+/* CHÂN TRANG */
+
+.quote {
+  max-width: 850px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.quote blockquote {
+  margin: 0 0 20px;
+  font-size: clamp(25px, 4vw, 42px);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+footer {
+  padding: 25px 0;
+  color: #d6c9a7;
+  background: #1f241b;
+  font-size: 14px;
+}
+
+/* ĐIỆN THOẠI */
+
+@media (max-width: 760px) {
+  .menu {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 40px 0;
+  }
+
+  .cover {
+    height: 440px;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .characters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .character img {
+    height: 250px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 470px) {
+  .characters {
+    grid-template-columns: 1fr;
+  }
+
+  .character img {
+    height: auto;
+    max-height: 450px;
+    object-fit: contain;
+    background: #c8bb99;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#home" class="logo">
+        SƠN HẢI <span>DỊ THƯ</span>
+      </a>
+
+      <div class="menu">
+        <a href="#gioithieu">Giới thiệu</a>
+        <a href="#nhanvat">Nhân vật</a>
+        <a href="#truyen">Trang truyện</a>
+      </div>
+
+      <a href="#truyen" class="button">Khám phá truyện</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- TRANG CHỦ -->
+
+<section class="wrap hero" id="home">
+  <div>
+    <div class="kicker">
+      Truyện tranh · Cổ phong Việt · Kỳ ảo
+    </div>
+
+    <h1>Sơn Hải<br><span>Dị Thư</span></h1>
+
+    <p class="old-title">
+      Tên cũ:
+      <strong>Điều kỳ lạ ở cuốn sách mà tôi xuyên</strong>
+    </p>
+
+    <p class="lead">
+      Những sự kiện và vụ án xưa của Việt Nam trở thành
+      nguồn cảm hứng cho một thế giới hoàn toàn hư cấu.
+      Giữa những gia tộc, dị sự và sinh linh kỳ bí,
+      sự thật không phải lúc nào cũng giống như lời truyền lại.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#gioithieu" class="button">
+        Bước vào thế giới truyện
+      </a>
+
+      <a href="#truyen" class="button">
+        Xem trang truyện
+      </a>
+    </div>
+  </div>
+
+  <div class="cover">
+    <img src="assets/art-cover.png"
+         alt="Tranh minh họa Sơn Hải Dị Thư">
+
+    <div class="cover-label">SƠN HẢI DỊ THƯ</div>
+  </div>
+</section>
+
+<!-- GIỚI THIỆU -->
+
+<section class="content" id="gioithieu">
+  <div class="wrap">
+    <div class="kicker">01 · Lời dẫn</div>
+    <h2>Chuyện lạ nơi cõi Nam</h2>
+
+    <p class="description">
+      Truyện tranh viễn tưởng lấy cảm hứng từ bối cảnh,
+      sự kiện và những vụ án xưa của Việt Nam.
+    </p>
+
+    <div class="about">
+      <div class="story">
+        <p>
+          Lấy cảm hứng từ những dấu tích lịch sử,
+          chuyện truyền miệng và các vụ án xưa của Việt Nam,
+          <em>Sơn Hải Dị Thư</em> mở ra một thế giới giả tưởng
+          mang sắc thái cổ phong Việt.
+        </p>
+
+        <p>
+          Những chi tiết lịch sử được hư cấu và tái tạo
+          thành những vụ việc kỳ lạ, bí mật gia tộc
+          cùng sự hiện diện của các sinh linh vượt ngoài
+          lẽ thường.
+        </p>
+
+        <p>
+          Đây không phải tài liệu lịch sử, mà là một câu chuyện
+          viễn tưởng lấy cảm hứng từ thời xưa.
+        </p>
+
+        <p>
+          <em>
+            Mỗi vụ việc là một manh mối.
+            Mỗi lời đồn có thể che giấu một sự thật khác.
+          </em>
+        </p>
+      </div>
+
+      <aside class="details">
+        <div class="detail">
+          <span>Tên truyện</span>
+          <strong>Sơn Hải Dị Thư</strong>
+        </div>
+
+        <div class="detail">
+          <span>Tên cũ</span>
+          <strong>Điều kỳ lạ ở cuốn sách mà tôi xuyên</strong>
+        </div>
+
+        <div class="detail">
+          <span>Tác giả</span>
+          <strong>Bút danh của bạn</strong>
+        </div>
+
+        <div class="detail">
+          <span>Thể loại</span>
+          <strong>Viễn tưởng · Bí ẩn</strong>
+        </div>
+
+        <div class="detail">
+          <span>Cảm hứng</span>
+          <strong>Việt Nam thời xưa</strong>
+        </div>
+
+        <div class="detail">
+          <span>Trạng thái</span>
+          <strong>Đang sáng tác</strong>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+  <section class="content dark" id="nhanvat">
+  <div class="wrap">
+    <div class="kicker">02 · Nhân vật</div>
+    <h2>Những người bước qua dị giới</h2>
+
+    <p class="description">
+      Một vài gương mặt từ bản vẽ của tác giả.
+      Tên và tiểu sử có thể cập nhật theo cốt truyện.
+    </p>
+
+    <div class="characters">
+
+      <article class="character">
+        <img src="assets/art-portrait.png"
+             alt="Nhân vật cổ phong mặc trang phục đỏ">
+
+        <div class="tag">KẺ GIỮ BÍ MẬT</div>
+        <h3>Nhân vật thứ nhất</h3>
+
+        <p>
+          Vẻ ngoài bình thản, lời nói sắc sảo,
+          dường như có những chuyện không muốn người khác biết.
+        </p>
+      </article>
+
+      <article class="character">
+        <img src="assets/art-character.png"
+             alt="Nhân vật cổ phong trong y phục sáng màu">
+
+        <div class="tag">NGƯỜI QUA ĐƯỜNG</div>
+        <h3>Nhân vật thứ hai</h3>
+
+        <p>
+          Trầm lặng giữa ánh sáng và bóng tối,
+          mang theo một câu chuyện chưa được kể hết.
+        </p>
+      </article>
+
+      <article class="character">
+        <img src="assets/art-cover.png"
+             alt="Minh họa nhân vật trong truyện">
+
+        <div class="tag">NHÂN VẬT TRUNG TÂM</div>
+        <h3>Nhân vật thứ ba</h3>
+
+        <p>
+          Một mảnh ghép trong bức tranh rộng lớn
+          của thế giới kỳ ảo này.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- TRANG TRUYỆN -->
+
+<section class="content" id="truyen">
+  <div class="wrap">
+    <div class="kicker">03 · Trích đoạn<div class="kicker">03 · Trích đoạn</div>
+    <h2>Vài trang từ truyện</h2>
+
+    <p class="description">
+      Một vài khung truyện để người đọc bước đầu
+      khám phá thế giới Sơn Hải Dị Thư.
+    </p>
+
+    <div class="gallery">
+
+      <figure class="page">
+        <img src="assets/trang-truyen-1.jpg"
+             alt="Trang truyện phần 1">
+        <figcaption>Trích đoạn · Phần 1</figcaption>
+      </figure>
+
+      <figure class="page">
+        <img src="assets/trang-truyen-2.jpg"
+             alt="Trang truyện phần 2">
+        <figcaption>Trích đoạn · Phần 2</figcaption>
+      </figure>
+
+      <figure class="page">
+        <img src="assets/trang-truyen-3.jpg"
+             alt="Trang truyện phần 3">
+        <figcaption>Trích đoạn · Phần 3</figcaption>
+      </figure>
+
+      <figure class="page">
+        <img src="assets/trang-truyen-4.jpg"
+             alt="Trang truyện phần 4">
+        <figcaption>Trích đoạn · Phần 4</figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- CÂU KẾT -->
+
+<section class="content dark">
+  <div class="wrap quote">
+    <blockquote>
+      “Nhưng trên đời này,
+      vẫn luôn tồn tại những ngoại lệ.”
+    </blockquote>
+
+    <p>
+      MỖI TRANG TRUYỆN LÀ MỘT CÁNH CỬA DẪN VÀO ĐIỀU CHƯA BIẾT
+    </p>
+
+    <a href="#home" class="button">Trở về đầu trang ↑</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    © <span id="year"></span> Sơn Hải Dị Thư
+    · Một thế giới cổ phong Việt do tác giả tự sáng tác.
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
