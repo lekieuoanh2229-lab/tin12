@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LÊ KIỀU OANH – MY LITTLE DIGITAL WORLD | 12A06</title>
+  <meta name="description" content="Không gian lưu giữ những mảnh ghép tuổi 18, sở thích và hành trình của Lê Kiều Oanh – Lớp 12A06." />
+
+  <!-- Nạp Google Fonts hỗ trợ tiếng Việt đẹp mắt + Pixel Font cho chi tiết Pink Pixel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Press+Start+2P&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       1. BIẾN MÀU SẮC & THIẾT LẬP CƠ BẢN (PINK PIXEL × KAWAII SCRAPBOOK PALETTE)
+       ========================================================================== */
+    :root {
+      /* Bảng màu chủ đạo: Hồng pastel, Hồng đào, Hồng điện tử, Tím lavender, Trắng kem, Xanh mint, Xanh baby blue */
+      --bg-paper: #fffaf5;               /* Trắng kem ấm áp */
+      --bg-card: #ffffff;
+      --bg-pastel-pink: #fcebf3;         /* Hồng pastel */
+      --bg-peach: #ffe6dc;               /* Hồng đào */
+      --bg-pastel-lavender: #f1ecfb;     /* Tím lavender nhạt */
+      --bg-mint: #e3f9f1;                /* Xanh mint */
+      --bg-baby-blue: #e4f2ff;           /* Xanh baby blue */
+      --bg-tape: rgba(235, 224, 252, 0.78);
+
+      --accent-electric: #e62e8a;        /* Hồng điện tử */
+      --accent-electric-soft: #ff5ca8;
+      --accent-peach: #ff8c7a;
+      --accent-lavender: #8b68d6;        /* Tím lavender */
+      --accent-mint: #2eb88a;
+      --accent-blue: #4a90e2;
+      --accent-blush: #f4b8d3;
+
+      --text-primary: #231926;
+      --text-secondary: #5a4b60;
+      --text-muted: #8a7991;
+
+      --border-hairline: rgba(139, 104, 214, 0.24);
+      --border-strong: #231926;
+
+      --shadow-editorial: 6px 6px 0px rgba(230, 46, 138, 0.16);
+      --shadow-pixel: 4px 4px 0px #231926;
+      --shadow-soft: 0 14px 34px rgba(84, 52, 99, 0.08);
+
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'Space Mono', monospace;
+      --font-pixel: 'VT323', monospace;
+      --font-pixel-head: 'Press Start 2P', monospace;
+
+      --nav-height: 74px;
+      --radius-sm: 6px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --transition-smooth: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 24px);
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text-primary);
+      background-color: var(--bg-paper);
+      /* Họa tiết giấy caro + lưới chấm + vệt màu pastel scrapbook */
+      background-image:
+        linear-gradient(to right, rgba(230, 46, 138, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(139, 104, 214, 0.05) 1px, transparent 1px),
+        radial-gradient(rgba(139, 104, 214, 0.16) 1.2px, transparent 1.2px),
+        radial-gradient(circle at 10% 15%, rgba(252, 235, 243, 0.92) 0%, transparent 42%),
+        radial-gradient(circle at 90% 25%, rgba(227, 249, 241, 0.72) 0%, transparent 38%),
+        radial-gradient(circle at 85% 82%, rgba(228, 242, 255, 0.85) 0%, transparent 45%);
+      background-size: 24px 24px, 24px 24px, 48px 48px, 100% 100%, 100% 100%, 100% 100%;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background-color: var(--accent-electric);
+      color: #ffffff;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ==========================================================================
+       2. CANVAS HIỆU ỨNG CÁNH HOA RƠI (LỚP NỀN MỀM MẠI, KHÔNG CẢN TRỞ CLICK)
+       ========================================================================== */
+    #petal-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ==========================================================================
+       3. THANH ĐIỀU HƯỚNG CỐ ĐỊNH (STICKY PIXEL-SCRAPBOOK HEADER)
+       ========================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      background: rgba(255, 250, 245, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 2px solid rgba(35, 25, 38, 0.12);
+      z-index: 100;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-logo .top-tag {
+      font-family: var(--font-pixel);
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-electric);
+    }
+
+    .brand-logo .main-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 8px 13px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border-radius: 999px;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-electric);
+      background-color: var(--bg-pastel-pink);
+    }
+
+    .nav-links a.active {
+      color: var(--accent-electric);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--bg-pastel-pink), var(--bg-mint));
+      border: 1px solid rgba(230, 46, 138, 0.25);
+    }
+
+    .nav-links a.active::after {
+      content: "♥";
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.65rem;
+      color: var(--accent-electric);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: var(--bg-pastel-pink);
+      border: 2px solid var(--border-strong);
+      box-shadow: 2px 2px 0px var(--border-strong);
+      border-radius: var(--radius-sm);
+      padding: 7px 12px;
+      font-family: var(--font-pixel);
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       4. CÁC THÀNH PHẦN SCRAPBOOK, PIXEL STICKER & GIẤY XÉ MÉP
+       ========================================================================== */
+    section {
+      padding: 96px 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-pixel);
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-electric);
+    }
+
+    .section-kicker::before {
+      content: "★";
+      font-size: 0.95rem;
+      color: var(--accent-lavender);
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.1rem, 4vw, 3rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--text-primary);
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--accent-electric);
+    }
+
+    /* Băng dính Washi Tape nhiều màu pastel */
+    .washi-tape {
+      position: absolute;
+      width: 98px;
+      height: 25px;
+      background: var(--bg-tape);
+      border-left: 2px dotted rgba(139, 104, 214, 0.45);
+      border-right: 2px dotted rgba(139, 104, 214, 0.45);
+      box-shadow: 0 2px 6px rgba(35, 25, 38, 0.06);
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .washi-tape.tape-mint {
+      background: rgba(168, 240, 214, 0.75);
+      border-color: rgba(46, 184, 138, 0.45);
+    }
+
+    .washi-tape.tape-blue {
+      background: rgba(186, 222, 255, 0.78);
+      border-color: rgba(74, 144, 226, 0.45);
+    }
+
+    .washi-tape.tape-peach {
+      background: rgba(255, 212, 194, 0.82);
+      border-color: rgba(255, 140, 122, 0.45);
+    }
+
+    /* Sticker Pixel Art & Kawaii trang trí góc thẻ */
+    .pixel-sticker {
+      position: absolute;
+      z-index: 5;
+      pointer-events: none;
+      filter: drop-shadow(2px 2px 0px rgba(35, 25, 38, 0.22));
+      animation: floatSticker 3.6s ease-in-out infinite;
+    }
+
+    @keyframes floatSticker {
+      0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+      50% { transform: translateY(-5px) rotate(calc(var(--rot, 0deg) + 3deg)); }
+    }
+
+    /* Viền giấy kẻ ô / giấy xé mép nhẹ */
+    .grid-paper-bg {
+      background-image:
+        linear-gradient(to right, rgba(74, 144, 226, 0.12) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(74, 144, 226, 0.12) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+
+    .torn-top-edge {
+      position: relative;
+      border-top: 2px dashed rgba(230, 46, 138, 0.35);
+    }
+
+    /* Hiệu ứng hiện dần khi cuộn trang */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       5. KHU VỰC TRANG CHỦ (HERO – PIXEL WORLD COVER, FILM STRIP & POLAROID)
+       ========================================================================== */
+    .hero-section {
+      padding-top: calc(var(--nav-height) + 46px);
+      padding-bottom: 84px;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.16fr 0.84fr;
+      gap: 52px;
+      align-items: center;
+    }
+
+    .pixel-hud-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px;
+      background-color: var(--bg-card);
+      border: 2px solid var(--border-strong);
+      box-shadow: 3px 3px 0px var(--accent-blush);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-pixel);
+      font-size: 1.05rem;
+      letter-spacing: 0.05em;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .pixel-hud-badge .heart-icon {
+      color: var(--accent-electric);
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.7rem, 5.3vw, 4.35rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+
+    .hero-title span {
+      display: block;
+      font-style: italic;
+      font-weight: 600;
+      background: linear-gradient(120deg, var(--accent-electric), var(--accent-lavender), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .meta-pill {
+      padding: 6px 14px;
+      background: linear-gradient(135deg, var(--bg-pastel-pink), var(--bg-pastel-lavender));
+      border: 1.5px solid var(--border-hairline);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      box-shadow: 2px 2px 0px rgba(139, 104, 214, 0.14);
+    }
+
+    .meta-pill:nth-child(2) {
+      background: linear-gradient(135deg, var(--bg-mint), var(--bg-baby-blue));
+    }
+
+    .meta-pill:nth-child(3) {
+      background: linear-gradient(135deg, var(--bg-peach), var(--bg-pastel-pink));
+    }
+
+    .meta-pill strong {
+      font-weight: 700;
+      color: var(--accent-electric);
+      margin-right: 4px;
+    }
+
+    .hero-bio {
+      font-size: 1.03rem;
+      color: var(--text-secondary);
+      max-width: 575px;
+      margin-bottom: 26px;
+      background: rgba(255, 255, 255, 0.72);
+      padding: 16px 18px;
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--accent-lavender);
+    }
+
+    /* Dải film vintage photobook mini dưới đoạn giới thiệu */
+    .film-strip-mini {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: #231926;
+      border-radius: var(--radius-sm);
+      margin-bottom: 28px;
+      max-width: 575px;
+      box-shadow: 4px 4px 0px rgba(230, 46, 138, 0.25);
+      overflow-x: auto;
+    }
+
+    .film-frame {
+      flex: 1;
+      min-width: 118px;
+      background: #fffaf5;
+      color: var(--text-primary);
+      padding: 6px 8px;
+      border-radius: 2px;
+      font-family: var(--font-pixel);
+      font-size: 0.95rem;
+      line-height: 1.1;
+      border-top: 4px solid var(--accent-blush);
+      border-bottom: 4px solid var(--bg-mint);
+    }
+
+    .film-frame small {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 26px;
+      background-color: var(--accent-electric);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.92rem;
+      border-radius: 999px;
+      border: 2px solid var(--border-strong);
+      box-shadow: 3px 3px 0px var(--border-strong);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-primary:hover {
+      background-color: #cf2278;
+      transform: translate(-1px, -2px);
+      box-shadow: 5px 5px 0px var(--border-strong);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      background-color: var(--bg-mint);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.92rem;
+      border-radius: 999px;
+      border: 2px solid var(--border-strong);
+      box-shadow: 3px 3px 0px var(--border-strong);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-baby-blue);
+      transform: translate(-1px, -2px);
+      box-shadow: 5px 5px 0px var(--border-strong);
+    }
+
+    /* Khung ảnh Polaroid Scrapbook + Pixel World bên phải */
+    .polaroid-wrapper {
+      position: relative;
+      max-width: 390px;
+      margin: 0 auto;
+    }
+
+    .polaroid-card {
+      position: relative;
+      background-color: var(--bg-card);
+      padding: 18px 18px 26px 18px;
+      border: 2px solid rgba(35, 25, 38, 0.16);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-editorial), var(--shadow-soft);
+      transform: rotate(2deg);
+      transition: var(--transition-smooth);
+    }
+
+    .polaroid-card:hover {
+      transform: rotate(0deg) translateY(-4px);
+    }
+
+    .polaroid-card .washi-tape.top-left {
+      top: -12px;
+      left: -24px;
+      transform: rotate(-28deg);
+    }
+
+    .polaroid-card .washi-tape.bottom-right {
+      bottom: -11px;
+      right: -20px;
+      transform: rotate(-22deg);
+    }
+
+    .avatar-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background: linear-gradient(155deg, var(--bg-pastel-pink) 0%, var(--bg-pastel-lavender) 55%, var(--bg-baby-blue) 100%);
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+    }
+
+    .avatar-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      color: var(--text-secondary);
+      z-index: 1;
+    }
+
+    .avatar-fallback .monogram {
+      font-family: var(--font-serif);
+      font-size: 4.5rem;
+      font-style: italic;
+      line-height: 1;
+      color: var(--accent-electric);
+      margin-bottom: 8px;
+    }
+
+    .avatar-fallback span {
+      font-family: var(--font-pixel);
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* Huy hiệu máy ảnh / game mini gắn góc Polaroid */
+    .polaroid-gadget-tag {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      z-index: 3;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 4px;
+      padding: 3px 8px;
+      font-family: var(--font-pixel);
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      box-shadow: 2px 2px 0px var(--accent-mint);
+    }
+
+    .polaroid-caption {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-top: 1.5px dashed var(--border-hairline);
+      padding-top: 12px;
+    }
+
+    .polaroid-caption .name {
+      font-family: var(--font-serif);
+      font-size: 1.42rem;
+      font-style: italic;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .polaroid-caption .stamp {
+      font-family: var(--font-pixel);
+      font-size: 1.02rem;
+      color: var(--accent-lavender);
+      letter-spacing: 0.05em;
+    }
+
+    /* ==========================================================================
+       6. KHU VỰC GIỚI THIỆU CHI TIẾT (BENTO SCRAPBOOK + PIXEL DIARY)
+       ========================================================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+
+    .scrap-card {
+      position: relative;
+      background-color: var(--bg-card);
+      border: 1.5px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition-smooth);
+    }
+
+    .scrap-card:hover {
+      border-color: rgba(230, 46, 138, 0.45);
+      transform: translateY(-3px);
+    }
+
+    .card-profile {
+      grid-column: span 5;
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg-pastel-pink) 100%);
+    }
+
+    .card-personality {
+      grid-column: span 7;
+    }
+
+    .card-strengths {
+      grid-column: span 6;
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg-mint) 100%);
+    }
+
+    .card-future {
+      grid-column: span 6;
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg-pastel-lavender) 100%);
+    }
+
+    .card-quote {
+      grid-column: span 12;
+      background: linear-gradient(120deg, #ffffff 0%, var(--bg-peach) 55%, var(--bg-baby-blue) 100%);
+      border-left: 5px solid var(--accent-electric);
+      padding: 30px 34px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-label {
+      font-family: var(--font-pixel);
+      font-size: 1.08rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-lavender);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .card-heading {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+
+    .info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .info-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed var(--border-hairline);
+      font-size: 0.95rem;
+    }
+
+    .info-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .info-list .key {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .info-list .val {
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: right;
+    }
+
+    .trait-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .trait-tag {
+      padding: 5px 13px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      background-color: var(--bg-pastel-lavender);
+      color: var(--text-primary);
+      border: 1px solid rgba(139, 104, 214, 0.25);
+    }
+
+    .trait-tag:nth-child(2n) {
+      background-color: var(--bg-pastel-pink);
+      border-color: rgba(230, 46, 138, 0.22);
+    }
+
+    .trait-tag:nth-child(3n) {
+      background-color: var(--bg-mint);
+      border-color: rgba(46, 184, 138, 0.25);
+    }
+
+    .styled-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .styled-list li {
+      position: relative;
+      padding-left: 24px;
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+    }
+
+    .styled-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      top: 1px;
+      font-size: 0.82rem;
+      color: var(--accent-electric);
+    }
+
+    .quote-text {
+      font-family: var(--font-serif);
+      font-size: clamp(1.45rem, 2.6vw, 2rem);
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--text-primary);
+    }
+
+    .quote-author {
+      font-family: var(--font-pixel);
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      color: var(--accent-electric);
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       7. KHU VỰC SỞ THÍCH (PIXEL ART × SCRAPBOOK CARDS)
+       ========================================================================== */
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .hobby-card {
+      position: relative;
+      background-color: var(--bg-card);
+      border: 1.5px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition-smooth);
+    }
+
+    .hobby-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-electric);
+      box-shadow: var(--shadow-editorial), var(--shadow-soft);
+    }
+
+    .hobby-visual {
+      position: relative;
+      height: 175px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1.5px dashed var(--border-hairline);
+    }
+
+    .hobby-visual.tone-1 {
+      background: linear-gradient(135deg, var(--bg-pastel-pink) 0%, var(--bg-peach) 100%);
+    }
+    .hobby-visual.tone-2 {
+      background: linear-gradient(135deg, var(--bg-pastel-lavender) 0%, var(--bg-baby-blue) 100%);
+    }
+    .hobby-visual.tone-3 {
+      background: linear-gradient(135deg, var(--bg-mint) 0%, var(--bg-pastel-pink) 100%);
+    }
+
+    .hobby-visual svg {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .hobby-card:hover .hobby-visual svg {
+      transform: scale(1.05);
+    }
+
+    .hobby-index {
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      font-family: var(--font-pixel);
+      font-size: 1rem;
+      padding: 2px 10px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 4px;
+      color: var(--text-primary);
+    }
+
+    .hobby-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .hobby-title {
+      font-family: var(--font-serif);
+      font-size: 1.48rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .hobby-desc {
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .hobby-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-hairline);
+      font-family: var(--font-pixel);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent-electric);
+      letter-spacing: 0.04em;
+      transition: var(--transition-smooth);
+    }
+
+    .hobby-link:hover {
+      color: var(--accent-lavender);
+      padding-left: 4px;
+    }
+
+    /* ==========================================================================
+       8. TRÌNH PHÁT NHẠC CÁ NHÂN (POCKET GAMEBOY / RETRO MUSIC PLAYER)
+       ========================================================================== */
+    .music-section {
+      padding-top: 40px;
+      padding-bottom: 84px;
+    }
+
+    .player-shell {
+      position: relative;
+      background: linear-gradient(125deg, #ffffff 0%, var(--bg-pastel-pink) 45%, var(--bg-pastel-lavender) 78%, var(--bg-mint) 100%);
+      border: 2px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 34px 36px;
+      box-shadow: 6px 6px 0px var(--border-strong), var(--shadow-soft);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .player-shell .washi-tape {
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1.5deg);
+    }
+
+    .album-art-box {
+      position: relative;
+      width: 116px;
+      height: 116px;
+      border-radius: 50%;
+      padding: 6px;
+      background: #ffffff;
+      border: 2px solid var(--border-strong);
+      box-shadow: 3px 3px 0px var(--accent-blush);
+      flex-shrink: 0;
+    }
+
+    .album-disc {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      background: radial-gradient(circle at 30% 30%, #ff8ac4, #e62e8a 48%, #8b68d6 100%);
+      animation: spinDisc 14s linear infinite;
+      animation-play-state: paused;
+    }
+
+    .album-disc.is-playing {
+      animation-play-state: running;
+    }
+
+    .album-disc img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .album-disc::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: var(--bg-mint);
+      border: 2.5px solid var(--border-strong);
+    }
+
+    @keyframes spinDisc {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .track-details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .player-eyebrow {
+      font-family: var(--font-pixel);
+      font-size: 1.08rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-electric);
+    }
+
+    .track-title {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .track-artist {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-top: -2px;
+    }
+
+    .progress-area {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background-color: rgba(255, 255, 255, 0.85);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 999px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-electric), var(--accent-lavender), var(--accent-mint));
+      border-radius: 999px;
+      transition: width 0.1s linear;
+    }
+
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-pixel);
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .player-status-note {
+      font-size: 0.8rem;
+      color: var(--accent-lavender);
+      font-style: italic;
+      min-height: 1.2em;
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ctrl-btn {
+      background-color: #ffffff;
+      border: 2px solid var(--border-strong);
+      box-shadow: 2px 2px 0px var(--border-strong);
+      color: var(--text-primary);
+      font-family: var(--font-pixel);
+      font-size: 1.05rem;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .ctrl-btn:hover {
+      background-color: var(--bg-baby-blue);
+      transform: translate(-1px, -1px);
+    }
+
+    .ctrl-btn.play-main {
+      background-color: var(--accent-electric);
+      color: #ffffff;
+      font-weight: 700;
+      padding: 10px 22px;
+      min-width: 104px;
+    }
+
+    .ctrl-btn.play-main:hover {
+      background-color: #cf2278;
+    }
+
+    /* ==========================================================================
+       9. THỜI GIAN BIỂU TUẦN (PIXEL DIARY SCHEDULE TABLE)
+       ========================================================================== */
+    .schedule-note {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .table-wrapper {
+      position: relative;
+      width: 100%;
+      overflow-x: auto;
+      background-color: var(--bg-card);
+      border: 2px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      box-shadow: 5px 5px 0px rgba(139, 104, 214, 0.25), var(--shadow-soft);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .schedule-table {
+      width: 100%;
+      min-width: 860px;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    .schedule-table thead {
+      background: linear-gradient(90deg, var(--bg-pastel-pink), var(--bg-pastel-lavender), var(--bg-mint));
+    }
+
+    .schedule-table th {
+      padding: 16px 14px;
+      font-family: var(--font-pixel);
+      font-size: 1.08rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      border-bottom: 2px solid var(--border-strong);
+      border-right: 1px solid rgba(139, 104, 214, 0.16);
+    }
+
+    .schedule-table th:first-child {
+      width: 132px;
+      color: var(--accent-electric);
+    }
+
+    .schedule-table td {
+      padding: 14px;
+      border-bottom: 1px solid rgba(139, 104, 214, 0.14);
+      border-right: 1px solid rgba(139, 104, 214, 0.14);
+      color: var(--text-secondary);
+      vertical-align: top;
+      transition: background-color 0.22s ease, color 0.22s ease;
+    }
+
+    .schedule-table td:first-child {
+      font-family: var(--font-pixel);
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      background-color: var(--bg-baby-blue);
+    }
+
+    .schedule-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .schedule-table tbody td:not(:first-child):hover {
+      background-color: var(--bg-pastel-pink);
+      color: var(--text-primary);
+    }
+
+    .schedule-table td[contenteditable="true"]:focus {
+      outline: 2px solid var(--accent-electric);
+      outline-offset: -2px;
+      background-color: #ffffff;
+      color: var(--text-primary);
+    }
+
+    .slot-tag {
+      display: inline-block;
+      font-family: var(--font-pixel);
+      font-size: 0.95rem;
+      color: var(--accent-lavender);
+      background: var(--bg-pastel-lavender);
+      padding: 0 6px;
+      border-radius: 3px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       10. KHU VỰC LIÊN HỆ & CHÂN TRANG
+       ========================================================================== */
+    .contact-panel {
+      position: relative;
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-pastel-pink) 45%, var(--bg-pastel-lavender) 80%, var(--bg-baby-blue) 100%);
+      border: 2px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      box-shadow: 6px 6px 0px var(--border-strong), var(--shadow-soft);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .contact-lead {
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      margin-top: 12px;
+      max-width: 460px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 22px;
+      background-color: rgba(255, 255, 255, 0.92);
+      border: 1.5px solid var(--border-strong);
+      box-shadow: 3px 3px 0px rgba(230, 46, 138, 0.18);
+      border-radius: var(--radius-md);
+      transition: var(--transition-smooth);
+    }
+
+    .contact-item:hover {
+      border-color: var(--accent-electric);
+      transform: translateX(6px);
+      background-color: var(--bg-mint);
+    }
+
+    .contact-platform {
+      font-family: var(--font-pixel);
+      font-size: 1.08rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-electric);
+    }
+
+    .contact-handle {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+
+    .site-footer {
+      position: relative;
+      z-index: 2;
+      border-top: 2px dashed var(--border-hairline);
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .footer-credit {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-credit strong {
+      color: var(--accent-electric);
+    }
+
+    .footer-note {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.18rem;
+      color: var(--text-primary);
+    }
+
+    /* ==========================================================================
+       11. TƯƠNG THÍCH ĐIỆN THOẠI & MÁY TÍNH BẢNG (RESPONSIVE)
+       ========================================================================== */
+    @media (max-width: 960px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .polaroid-wrapper {
+        max-width: 340px;
+      }
+
+      .card-profile,
+      .card-personality,
+      .card-strengths,
+      .card-future {
+        grid-column: span 12;
+      }
+
+      .hobbies-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .player-shell {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+        padding: 28px 22px;
+      }
+
+      .track-details {
+        width: 100%;
+      }
+
+      .contact-panel {
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      section {
+        padding: 72px 0;
+      }
+
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 250, 245, 0.98);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px 24px 24px;
+        border-bottom: 2px solid var(--border-strong);
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: var(--transition-smooth);
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-links a {
+        padding: 12px 16px;
+        border-radius: var(--radius-sm);
+      }
+
+      .hobbies-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .film-strip-mini {
+        flex-wrap: wrap;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canvas vẽ hiệu ứng cánh hoa rơi nhẹ nhàng toàn trang -->
+  <canvas id="petal-canvas" aria-hidden="true"></canvas>
+
+  <!-- ========================================================================
+       THANH ĐIỀU HƯỚNG CỐ ĐỊNH
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="#trang-chu" class="brand-logo" aria-label="Trang chủ Lê Kiều Oanh - My Little Digital World">
+        <span class="top-tag">♥ PIXEL DIARY • LÊ KIỀU OANH</span>
+        <span class="main-title">LÊ KIỀU OANH – MY LITTLE DIGITAL WORLD</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav">
+        Menu
+      </button>
+
+      <nav aria-label="Điều hướng chính">
+        <ul class="nav-links" id="primaryNav">
+          <li><a href="#trang-chu" class="nav-link active">Trang chủ</a></li>
+          <li><a href="#gioi-thieu" class="nav-link">Giới thiệu</a></li>
+          <li><a href="#so-thich" class="nav-link">Sở thích</a></li>
+          <li><a href="#thoi-gian-bieu" class="nav-link">Thời gian biểu</a></li>
+          <li><a href="#lien-he" class="nav-link">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         1. TRANG CHỦ – GIỚI THIỆU TỔNG QUAN
+         ====================================================================== -->
+    <section id="trang-chu" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="pixel-hud-badge">
+            <span class="heart-icon">♥ ♥ ♥</span>
+            <span>WORLD 12A06 // LÊ KIỀU OANH ARCHIVE</span>
+          </div>
+
+          <h1 class="hero-title">
+            Welcome to
+            <span>THẾ GIỚI CỦA LÊ KIỀU OANH.</span>
+          </h1>
+
+          <div class="hero-meta-strip">
+            <div class="meta-pill"><strong>Chủ nhân:</strong> Lê Kiều Oanh</div>
+            <div class="meta-pill"><strong>Lớp:</strong> 12A06</div>
+            <div class="meta-pill"><strong>Trường:</strong> THPT số 1 Tư Nghĩa</div>
+          </div>
+
+          <p class="hero-bio">
+            Một góc nhỏ mang sắc hồng pastel và tím nhạt, nơi lưu giữ những trang phác thảo dang dở, giai điệu yêu thích và những suy nghĩ trong trẻo của năm cuối cấp. Mình tin vào việc sống chậm lại để quan sát, sáng tạo từ những điều giản dị và kiên nhẫn xây dựng phiên bản trưởng thành hơn của chính mình mỗi ngày.
+          </p>
+
+          <!-- Dải ảnh film & máy ảnh / máy chơi game mini phong cách Vintage Photobook × Pink Pixel -->
+          <div class="film-strip-mini" aria-label="Cuộn film kỷ niệm">
+            <div class="film-frame">
+              <small>FRAME 01 • FILM</small>
+              📷 Ký ức 12A06
+            </div>
+            <div class="film-frame">
+              <small>FRAME 02 • PIXEL</small>
+              🕹️ Pink Game World
+            </div>
+            <div class="film-frame">
+              <small>FRAME 03 • DIARY</small>
+              🎧 Retro Sound
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#gioi-thieu" class="btn-primary">Khám phá về mình &rarr;</a>
+            <a href="#trinh-phat-nhac" class="btn-secondary">Nghe một bản nhạc</a>
+          </div>
+        </div>
+
+        <!-- Khung ảnh đại diện phong cách Polaroid dán băng keo Washi + Pixel Sticker -->
+        <div class="polaroid-wrapper reveal">
+          <!-- Sticker pixel ngôi sao & trái tim -->
+          <svg class="pixel-sticker" style="top: -18px; right: -14px; width: 42px; height: 42px; --rot: 10deg;" viewBox="0 0 16 16" aria-hidden="true">
+            <rect x="7" y="1" width="2" height="2" fill="#e62e8a"/>
+            <rect x="6" y="3" width="4" height="2" fill="#ff8ac4"/>
+            <rect x="2" y="5" width="12" height="2" fill="#ff8ac4"/>
+            <rect x="4" y="7" width="8" height="2" fill="#fcebf3"/>
+            <rect x="3" y="9" width="4" height="2" fill="#e62e8a"/>
+            <rect x="9" y="9" width="4" height="2" fill="#e62e8a"/>
+            <rect x="2" y="11" width="3" height="2" fill="#8b68d6"/>
+            <rect x="11" y="11" width="3" height="2" fill="#8b68d6"/>
+          </svg>
+
+          <svg class="pixel-sticker" style="bottom: 18px; left: -22px; width: 38px; height: 38px; --rot: -12deg;" viewBox="0 0 16 16" aria-hidden="true">
+            <rect x="2" y="3" width="4" height="2" fill="#e62e8a"/>
+            <rect x="10" y="3" width="4" height="2" fill="#e62e8a"/>
+            <rect x="1" y="5" width="14" height="3" fill="#ff5ca8"/>
+            <rect x="2" y="8" width="12" height="2" fill="#e62e8a"/>
+            <rect x="4" y="10" width="8" height="2" fill="#e62e8a"/>
+            <rect x="6" y="12" width="4" height="2" fill="#e62e8a"/>
+            <rect x="7" y="14" width="2" height="1" fill="#e62e8a"/>
+          </svg>
+
+          <article class="polaroid-card">
+            <div class="washi-tape top-left tape-peach" aria-hidden="true"></div>
+            <div class="washi-tape bottom-right tape-mint" aria-hidden="true"></div>
+
+            <div class="avatar-frame">
+              <!-- Giữ nguyên ảnh đại diện gốc -->
+              <img src="o2" alt="Ảnh đại diện của Lê Kiều Oanh" onerror="this.style.display='none';" />
+              <div class="avatar-fallback" aria-hidden="true">
+                <div class="monogram">O.</div>
+                <span>o2 // LÊ KIỀU OANH</span>
+              </div>
+              <span class="polaroid-gadget-tag">📷 FILM CAM • 12A06</span>
+            </div>
+
+            <div class="polaroid-caption">
+              <span class="name">Lê Kiều Oanh</span>
+              <span class="stamp">CLASS 12A06 // 2026</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         2. THÔNG TIN CÁ NHÂN (BENTO SCRAPBOOK)
+         ====================================================================== -->
+    <section id="gioi-thieu">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker">01 / Dossier</span>
+          <h2 class="section-title">Những mảnh ghép <em>cá nhân</em></h2>
+        </div>
+
+        <div class="about-grid">
+          <!-- Thẻ 1: Hồ sơ cơ bản -->
+          <article class="scrap-card card-profile grid-paper-bg reveal">
+            <div class="washi-tape tape-blue" style="top: -11px; left: 24px; transform: rotate(-4deg);" aria-hidden="true"></div>
+            <span class="card-label">Hồ sơ lưu trữ</span>
+            <h3 class="card-heading">Thông tin cơ bản</h3>
+            <ul class="info-list">
+              <li>
+                <span class="key">Họ và tên</span>
+                <span class="val">Lê Kiều Oanh</span>
+              </li>
+              <li>
+                <span class="key">Lớp</span>
+                <span class="val">12A06</span>
+              </li>
+              <li>
+                <span class="key">Trường</span>
+                <span class="val">THPT số 1 Tư Nghĩa</span>
+              </li>
+              <li>
+                <span class="key">Ngày sinh</span>
+                <span class="val">19 / 10 / 2009</span>
+              </li>
+              <li>
+                <span class="key">Bản sắc</span>
+                <span class="val">Thẩm mỹ &bull; Tò mò &bull; Chân thành</span>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Thẻ 2: Tính cách -->
+          <article class="scrap-card card-personality reveal">
+            <div class="washi-tape tape-peach" style="top: -11px; right: 26px; transform: rotate(5deg);" aria-hidden="true"></div>
+            <span class="card-label">Góc nhìn &amp; Tâm hồn</span>
+            <h3 class="card-heading">Tính cách</h3>
+            <div class="trait-tags">
+              <span class="trait-tag">Tinh tế</span>
+              <span class="trait-tag">Giàu trí tưởng tượng</span>
+              <span class="trait-tag">Hài hước, nhẹ nhàng</span>
+              <span class="trait-tag">Cầu toàn vừa đủ</span>
+              <span class="trait-tag">Lắng nghe</span>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.96rem;">
+              Mình là người cân bằng giữa sự bay bổng của nghệ thuật và nét thực tế trong công việc hằng ngày. Có lúc trầm lắng để quan sát từng chi tiết nhỏ xung quanh, nhưng khi ở cạnh những người thân quen, mình luôn mang lại năng lượng ấm áp, cởi mở và thẳng thắn.
+            </p>
+          </article>
+
+          <!-- Thẻ 3: Điểm mạnh -->
+          <article class="scrap-card card-strengths reveal">
+            <span class="card-label">Năng lực cốt lõi</span>
+            <h3 class="card-heading">Điểm mạnh</h3>
+            <ul class="styled-list">
+              <li>Nhạy bén với màu sắc, bố cục thị giác và cách kể chuyện qua hình ảnh.</li>
+              <li>Tư duy sắp xếp vấn đề có hệ thống, kiên nhẫn hoàn thiện từng chi tiết nhỏ.</li>
+              <li>Khả năng tự học nhanh các công cụ sáng tạo, thiết kế và lập trình web cơ bản.</li>
+              <li>Giữ được sự bình tĩnh và thái độ tích cực trước những thử thách mới.</li>
+            </ul>
+          </article>
+
+          <!-- Thẻ 4: Ước mơ & Định hướng -->
+          <article class="scrap-card card-future reveal">
+            <span class="card-label">Chặng đường phía trước</span>
+            <h3 class="card-heading">Ước mơ &amp; Định hướng</h3>
+            <ul class="styled-list">
+              <li>Hoàn thành thật trọn vẹn cột mốc lớp 12A06 và chinh phục cánh cửa đại học mơ ước.</li>
+              <li>Theo đuổi lĩnh vực kết hợp giữa <strong>Thiết kế sáng tạo</strong> và <strong>Công nghệ số</strong>.</li>
+              <li>Xây dựng những dự án cá nhân mang dấu ấn thẩm mỹ riêng, lan tỏa cảm hứng tích cực đến mọi người.</li>
+            </ul>
+          </article>
+
+          <!-- Thẻ 5: Trích dẫn yêu thích -->
+          <article class="scrap-card card-quote reveal">
+            <span class="quote-author">Favorite Quote // Ghi chú bên lề</span>
+            <blockquote class="quote-text">
+              “Hãy cứ dịu dàng với những khởi đầu còn vụng về, bởi mọi thế giới rực rỡ đều được ghép nên từ từng nét vẽ nhỏ kiên nhẫn mỗi ngày.”
+            </blockquote>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. SỞ THÍCH CÁ NHÂN (PIXEL ART × SCRAPBOOK)
+         ====================================================================== -->
+    <section id="so-thich">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker">02 / Curated Interests</span>
+          <h2 class="section-title">Điều làm nên <em>niềm vui</em></h2>
+        </div>
+
+        <div class="hobbies-grid">
+          <!-- Sở thích 1 -->
+          <article class="hobby-card reveal">
+            <div class="hobby-visual tone-1">
+              <span class="hobby-index">01 • PIXEL ART</span>
+              <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="105" cy="92" r="54" fill="#e62e8a" fill-opacity="0.16" />
+                <circle cx="205" cy="84" r="42" stroke="#8b68d6" stroke-width="1.5" stroke-dasharray="4 4" />
+                <path d="M70 125C110 60 175 135 245 55" stroke="#e62e8a" stroke-width="2.2" stroke-linecap="round" />
+                <rect x="135" y="45" width="48" height="48" rx="6" transform="rotate(14 135 45)" stroke="#231926" stroke-width="1.2" />
+                <!-- Pixel hoa & ngôi sao nhỏ -->
+                <rect x="238" y="112" width="6" height="6" fill="#e62e8a"/>
+                <rect x="232" y="118" width="6" height="6" fill="#ff8ac4"/>
+                <rect x="244" y="118" width="6" height="6" fill="#ff8ac4"/>
+                <rect x="238" y="124" width="6" height="6" fill="#8b68d6"/>
+              </svg>
+            </div>
+            <div class="hobby-body">
+              <h3 class="hobby-title">Vẽ tranh &amp; Sáng tạo nghệ thuật</h3>
+              <p class="hobby-desc">
+                Ghi lại cảm xúc bằng điện thoại, nét phác thảo chì và những bảng phối màu ngẫu hứng mỗi khi cần tìm khoảng lặng với những nhân vật tự tạo.
+              </p>
+              <a href="https://tiktok.com/@lorri_chan" target="_blank" rel="noopener noreferrer" class="hobby-link">
+                <span>Bảng cảm hứng Pinterest</span>
+                <span>&nearr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Sở thích 2 -->
+          <article class="hobby-card reveal">
+            <div class="hobby-visual tone-2">
+              <span class="hobby-index">02 • SCRAPBOOK UI</span>
+              <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="65" y="36" width="190" height="108" rx="10" fill="#ffffff" stroke="#8b68d6" stroke-width="1.5" />
+                <line x1="65" y1="62" x2="255" y2="62" stroke="#8b68d6" stroke-width="1.2" />
+                <rect x="84" y="78" width="64" height="48" rx="4" fill="#fcebf3" stroke="#e62e8a" stroke-width="1.2" />
+                <line x1="164" y1="84" x2="234" y2="84" stroke="#231926" stroke-width="1.5" />
+                <line x1="164" y1="100" x2="218" y2="100" stroke="#8a7991" stroke-width="1.5" />
+                <line x1="164" y1="116" x2="226" y2="116" stroke="#8a7991" stroke-width="1.5" />
+                <circle cx="80" cy="49" r="3" fill="#e62e8a"/>
+                <circle cx="92" cy="49" r="3" fill="#2eb88a"/>
+                <circle cx="104" cy="49" r="3" fill="#4a90e2"/>
+              </svg>
+            </div>
+            <div class="hobby-body">
+              <h3 class="hobby-title">Thiết kế &amp; Bố cục thị giác</h3>
+              <p class="hobby-desc">
+                Yêu thích typography, thiết kế bìa truyện, đồ họa vector và biến những ý tưởng trừu tượng thành giao diện có hồn.
+              </p>
+              <a href="https://tiktok.com/@kiuoanh6760" target="_blank" rel="noopener noreferrer" class="hobby-link">
+                <span>Góc trưng bày Behance</span>
+                <span>&nearr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Sở thích 3 -->
+          <article class="hobby-card reveal">
+            <div class="hobby-visual tone-3">
+              <span class="hobby-index">03 • RETRO AUDIO</span>
+              <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="160" cy="90" r="56" fill="#231926" fill-opacity="0.06" stroke="#231926" stroke-width="1.4" />
+                <circle cx="160" cy="90" r="36" stroke="#e62e8a" stroke-width="1.2" stroke-dasharray="6 4" />
+                <circle cx="160" cy="90" r="14" fill="#e62e8a" fill-opacity="0.25" stroke="#e62e8a" stroke-width="1.4" />
+                <path d="M216 42L192 94" stroke="#8b68d6" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="hobby-body">
+              <h3 class="hobby-title">Nghe nhạc &amp; Cảm nhận giai điệu</h3>
+              <p class="hobby-desc">
+                Những bản indie nhẹ nhàng, nhạc không lời lúc học bài hay những giai điệu giàu chất thơ luôn là người bạn đồng hành quen thuộc.
+              </p>
+              <a href="https://open.spotify.com/user/315puuazuf2h4eq72gcno6rdyjvy?si=Zp-7BHMOSDWckhTBm9x23w&utm_source=copy-link&sci=spotify%3Acard-config%3A61SiLRfBdiM9UDir6Oih1b" target="_blank" rel="noopener noreferrer" class="hobby-link">
+                <span>Playlist trên Spotify</span>
+                <span>&nearr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Sở thích 4 -->
+          <article class="hobby-card reveal">
+            <div class="hobby-visual tone-2">
+              <span class="hobby-index">04 • STORY BOOK</span>
+              <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M82 48C112 44 142 50 160 62C178 50 208 44 238 48V134C208 130 178 136 160 148C142 136 112 130 82 134V48Z" fill="#ffffff" stroke="#231926" stroke-width="1.4" />
+                <line x1="160" y1="62" x2="160" y2="148" stroke="#e62e8a" stroke-width="1.5" />
+                <line x1="100" y1="74" x2="142" y2="78" stroke="#8b68d6" stroke-width="1.3" />
+                <line x1="100" y1="92" x2="142" y2="96" stroke="#8b68d6" stroke-width="1.3" />
+                <line x1="178" y1="78" x2="220" y2="74" stroke="#8b68d6" stroke-width="1.3" />
+              </svg>
+            </div>
+            <div class="hobby-body">
+              <h3 class="hobby-title">Đọc sách &amp; Chiêm nghiệm</h3>
+              <p class="hobby-desc">
+                Tìm kiếm những góc nhìn mới qua tản văn, văn học hiện đại và sách về tư duy sáng tạo để nuôi dưỡng chiều sâu tâm hồn.
+              </p>
+              <a href="https://www.facebook.com/share/14wX7oDY1xX/" target="_blank" rel="noopener noreferrer" class="hobby-link">
+                <span>Kệ sách Goodreads</span>
+                <span>&nearr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Sở thích 5 -->
+          <article class="hobby-card reveal">
+            <div class="hobby-visual tone-3">
+              <span class="hobby-index">05 • QUEST LOG</span>
+              <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="160" cy="90" r="52" stroke="#8b68d6" stroke-width="1.4" />
+                <polygon points="160,50 171,79 200,90 171,101 160,130 149,101 120,90 149,79" fill="#e62e8a" fill-opacity="0.18" stroke="#e62e8a" stroke-width="1.4" />
+              </svg>
+            </div>
+            <div class="hobby-body">
+              <h3 class="hobby-title">Khám phá những điều mới</h3>
+              <p class="hobby-desc">
+                Học một vài câu giao tiếp ngoại ngữ mới, thử nghiệm công cụ số hay dạo quanh những góc phố bình yên vào cuối tuần.
+              </p>
+              <a href="https://youtube.com/@oanhle42?si=6VoSifC8BWoyKDgv" target="_blank" rel="noopener noreferrer" class="hobby-link">
+                <span>Ghi chép trên Notion</span>
+                <span>&nearr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Sở thích 6 -->
+          <article class="hobby-card reveal">
+            <div class="hobby-visual tone-1">
+              <span class="hobby-index">06 • MEMORY NOTE</span>
+              <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="92" y="34" width="136" height="112" rx="6" fill="#ffffff" stroke="#231926" stroke-width="1.3" />
+                <line x1="112" y1="60" x2="208" y2="60" stroke="#e62e8a" stroke-width="1.5" />
+                <line x1="112" y1="80" x2="196" y2="80" stroke="#8a7991" stroke-width="1.2" />
+                <line x1="112" y1="98" x2="204" y2="98" stroke="#8a7991" stroke-width="1.2" />
+                <line x1="112" y1="116" x2="176" y2="116" stroke="#8a7991" stroke-width="1.2" />
+              </svg>
+            </div>
+            <div class="hobby-body">
+              <h3 class="hobby-title">Viết lách &amp; Lưu giữ ký ức</h3>
+              <p class="hobby-desc">
+                Viết lại những mẩu chuyện nhỏ, suy nghĩ vu vơ hoặc lời ca tự sự để sau này nhìn lại vẫn thấy trọn vẹn thanh xuân.
+              </p>
+              <a href="https://locket.cam/oaeh" target="_blank" rel="noopener noreferrer" class="hobby-link">
+                <span>Trang viết cá nhân</span>
+                <span>&nearr;</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. TRÌNH PHÁT NHẠC CÁ NHÂN (PERSONAL SOUNDTRACK PLAYER)
+         ====================================================================== -->
+    <section id="trinh-phat-nhac" class="music-section">
+      <div class="container">
+        <div class="player-shell reveal">
+          <div class="washi-tape tape-peach" aria-hidden="true"></div>
+
+          <!-- Bìa album dạng đĩa xoay -->
+          <div class="album-art-box">
+            <div class="album-disc" id="albumDisc">
+              <img id="trackCover" src="" alt="Bìa bài hát" style="display: none;" />
+            </div>
+          </div>
+
+          <!-- Thông tin bài hát và thanh tiến trình -->
+          <div class="track-details">
+            <span class="player-eyebrow">🕹️ Pocket Sound Player // Soundtrack of My Little World</span>
+            <h3 class="track-title" id="trackTitle">Đang tải danh sách nhạc...</h3>
+            <p class="track-artist" id="trackArtist">Lê Kiều Oanh's Playlist</p>
+
+            <div class="progress-area">
+              <div class="progress-bar-container" id="progressBar" role="slider" aria-label="Thanh thời lượng bài hát" tabindex="0">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+              <div class="time-row">
+                <span id="currentTime">00:00</span>
+                <span id="totalDuration">00:00</span>
+              </div>
+            </div>
+
+            <p class="player-status-note" id="playerNotice" aria-live="polite"></p>
+          </div>
+
+          <!-- Nút điều khiển tối giản -->
+          <div class="player-controls">
+            <button type="button" class="ctrl-btn" id="prevBtn" aria-label="Bài trước">Prev</button>
+            <button type="button" class="ctrl-btn play-main" id="playPauseBtn" aria-label="Phát hoặc tạm dừng">Play</button>
+            <button type="button" class="ctrl-btn" id="nextBtn" aria-label="Bài tiếp theo">Next</button>
+          </div>
+
+          <!-- Thẻ audio HTML5 ẩn, điều khiển hoàn toàn bằng JavaScript -->
+          <audio id="audioElement" preload="metadata"></audio>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. THỜI GIAN BIỂU TUẦN
+         ====================================================================== -->
+    <section id="thoi-gian-bieu">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker">03 / Weekly Rhythm</span>
+          <h2 class="section-title">Nhịp sống <em>mỗi tuần</em></h2>
+        </div>
+
+        <p class="schedule-note reveal">
+          Bạn có thể nhấn trực tiếp vào từng ô bên dưới để chỉnh sửa nhanh lịch học và hoạt động ngay trên trình duyệt (hoặc sửa trực tiếp trong mã nguồn HTML).
+        </p>
+
+        <div class="table-wrapper reveal">
+          <div class="washi-tape tape-mint" style="top: -11px; right: 32px; transform: rotate(3deg);" aria-hidden="true"></div>
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th>Khung giờ</th>
+                <th>Thứ Hai</th>
+                <th>Thứ Ba</th>
+                <th>Thứ Tư</th>
+                <th>Thứ Năm</th>
+                <th>Thứ Sáu</th>
+                <th>Thứ Bảy</th>
+                <th>Chủ Nhật</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>06:45 – 11:30</td>
+                <td contenteditable="true"><span class="slot-tag">Học tập</span><br />Học chính khóa trên lớp 12A06</td>
+                <td contenteditable="true"><span class="slot-tag">Học tập</span><br />Học chính khóa trên lớp 12A06</td>
+                <td contenteditable="true"><span class="slot-tag">Học tập</span><br />Học chính khóa trên lớp 12A06</td>
+                <td contenteditable="true"><span class="slot-tag">Học tập</span><br />Học chính khóa trên lớp 12A06</td>
+                <td contenteditable="true"><span class="slot-tag">Học tập</span><br />Học chính khóa trên lớp 12A06</td>
+                <td contenteditable="true"><span class="slot-tag">Ôn luyện</span><br />Hệ thống kiến thức tuần</td>
+                <td contenteditable="true"><span class="slot-tag">Nghỉ ngơi</span><br />Thức dậy muộn &amp; đọc sách</td>
+              </tr>
+              <tr>
+                <td>14:00 – 17:00</td>
+                <td contenteditable="true"><span class="slot-tag">Chiều</span><br />Học tăng cường / Tự học thư viện</td>
+                <td contenteditable="true"><span class="slot-tag">Chiều</span><br />Luyện đề &amp; ghi chú bài mới</td>
+                <td contenteditable="true"><span class="slot-tag">Chiều</span><br />Học nhóm cùng bạn bè</td>
+                <td contenteditable="true"><span class="slot-tag">Chiều</span><br />Học tăng cường trên trường</td>
+                <td contenteditable="true"><span class="slot-tag">Chiều</span><br />Hoàn thành bài tập tuần</td>
+                <td contenteditable="true"><span class="slot-tag">Sáng tạo</span><br />Vẽ tranh &amp; thiết kế đồ họa</td>
+                <td contenteditable="true"><span class="slot-tag">Khám phá</span><br />Dạo phố, cà phê &amp; chụp ảnh</td>
+              </tr>
+              <tr>
+                <td>19:30 – 22:00</td>
+                <td contenteditable="true"><span class="slot-tag">Buổi tối</span><br />Ôn tập bài &amp; nghe nhạc nhẹ</td>
+                <td contenteditable="true"><span class="slot-tag">Buổi tối</span><br />Giải đề &amp; chuẩn bị bài ngày mai</td>
+                <td contenteditable="true"><span class="slot-tag">Buổi tối</span><br />Tự học ngoại ngữ &amp; đọc sách</td>
+                <td contenteditable="true"><span class="slot-tag">Buổi tối</span><br />Ôn tập chuyên sâu các môn chính</td>
+                <td contenteditable="true"><span class="slot-tag">Thư giãn</span><br />Viết nhật ký &amp; xem phim</td>
+                <td contenteditable="true"><span class="slot-tag">Cá nhân</span><br />Chăm sóc góc học tập &amp; playlist</td>
+                <td contenteditable="true"><span class="slot-tag">Chuẩn bị</span><br />Lập kế hoạch cho tuần mới</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         6. KHU VỰC LIÊN HỆ
+         ====================================================================== -->
+    <section id="lien-he">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div class="washi-tape tape-blue" style="top: -12px; left: 36px; transform: rotate(-3deg);" aria-hidden="true"></div>
+          <div>
+            <span class="section-kicker">04 / Connect</span>
+            <h2 class="section-title">Giữ liên lạc với <em>Lê Kiều Oanh</em></h2>
+            <p class="contact-lead">
+              Nếu bạn muốn trò chuyện về thiết kế, chia sẻ một cuốn sách hay, hoặc đơn giản là gửi một lời chào đến thế giới nhỏ này, đừng ngần ngại nhắn cho mình qua các kênh bên cạnh.
+            </p>
+          </div>
+
+          <div class="contact-links">
+            <a href="mailto:your.email@example.com" class="contact-item">
+              <span class="contact-platform">Email</span>
+              <span class="contact-handle">your.email@example.com &rarr;</span>
+            </a>
+
+            <a href="https://facebook.com/your-username" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <span class="contact-platform">Facebook</span>
+              <span class="contact-handle">@oanh.profile &rarr;</span>
+            </a>
+
+            <a href="https://instagram.com/your-username" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <span class="contact-platform">Instagram</span>
+              <span class="contact-handle">@oanh.littleworld &rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       CHÂN TRANG (FOOTER)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-credit">
+        Designed by <strong>Lê Kiều Oanh</strong> &bull; &copy; 2026 – All rights reserved.
+      </div>
+      <p class="footer-note">
+        “Cảm ơn bạn đã ghé thăm và nán lại trong thế giới nhỏ đầy sắc hồng này.”
+      </p>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       JAVASCRIPT: ĐIỀU HƯỚNG, TRÌNH PHÁT NHẠC & HIỆU ỨNG CÁNH HOA RƠI
+       ======================================================================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      /* ======================================================================
+         A. MENU RESPONSIVE & ĐÁNH DẤU MỤC ĐANG XEM KHI CUỘN TRANG
+         ====================================================================== */
+      const menuToggle = document.getElementById("menuToggle");
+      const primaryNav = document.getElementById("primaryNav");
+      const navLinks = document.querySelectorAll(".nav-link");
+      const sections = document.querySelectorAll("main section[id]");
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = primaryNav.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.textContent = isOpen ? "Đóng" : "Menu";
+      });
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          primaryNav.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.textContent = "Menu";
+        });
+      });
+
+      const highlightActiveNav = () => {
+        const scrollPos = window.scrollY + 160;
+        sections.forEach((sec) => {
+          const top = sec.offsetTop;
+          const height = sec.offsetHeight;
+          const id = sec.getAttribute("id");
+          if (scrollPos >= top && scrollPos < top + height) {
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      };
+
+      window.addEventListener("scroll", highlightActiveNav, { passive: true });
+
+      /* ======================================================================
+         B. HIỆU ỨNG HIỆN NỘI DUNG NHẸ NHÀNG KHI CUỘN TRANG (INTERSECTION OBSERVER)
+         ====================================================================== */
+      const revealElements = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      revealElements.forEach((el) => revealObserver.observe(el));
+
+      /* ======================================================================
+         C. TRÌNH PHÁT NHẠC CÁ NHÂN (PERSONAL MUSIC PLAYER)
+         ====================================================================== */
+      const playlist = [
+        {
+          title: "Ngã tư đường tình",
+          artist: "Quách Thành Danh",
+          src: "ntdt.mp3",
+          cover: "ntđt"
+        },
+        {
+          title: "Thất tình",
+          artist: "Hoàng Đạo",
+          src: "7 tinh.mp3",
+          cover: "7tinh"
+        },
+        {
+          title: "Em Gái mưa",
+          artist: "Mr.siro-hương Tràm",
+          src: "ssstik.io_1792159479489.mp3",
+          cover: "egm"
+        }
+      ];
+
+      const audio = document.getElementById("audioElement");
+      const trackTitleEl = document.getElementById("trackTitle");
+      const trackArtistEl = document.getElementById("trackArtist");
+      const trackCoverEl = document.getElementById("trackCover");
+      const albumDiscEl = document.getElementById("albumDisc");
+      const playPauseBtn = document.getElementById("playPauseBtn");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const progressBar = document.getElementById("progressBar");
+      const progressFill = document.getElementById("progressFill");
+      const currentTimeEl = document.getElementById("currentTime");
+      const totalDurationEl = document.getElementById("totalDuration");
+      const playerNoticeEl = document.getElementById("playerNotice");
+
+      let currentTrackIndex = 0;
+      let isPlaying = false;
+
+      const formatTime = (seconds) => {
+        if (!Number.isFinite(seconds) || seconds < 0) return "00:00";
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+      };
+
+      const loadTrack = (index) => {
+        const track = playlist[index];
+        trackTitleEl.textContent = track.title;
+        trackArtistEl.textContent = track.artist;
+        audio.src = track.src;
+        progressFill.style.width = "0%";
+        currentTimeEl.textContent = "00:00";
+        totalDurationEl.textContent = "00:00";
+        playerNoticeEl.textContent = "";
+
+        if (track.cover) {
+          trackCoverEl.src = track.cover;
+          trackCoverEl.style.display = "block";
+        } else {
+          trackCoverEl.style.display = "none";
+        }
+      };
+
+      const playTrack = () => {
+        audio
+          .play()
+          .then(() => {
+            isPlaying = true;
+            playPauseBtn.textContent = "Pause";
+            albumDiscEl.classList.add("is-playing");
+            playerNoticeEl.textContent = "";
+          })
+          .catch(() => {
+            isPlaying = false;
+            playPauseBtn.textContent = "Play";
+            albumDiscEl.classList.remove("is-playing");
+            playerNoticeEl.textContent =
+              "Chưa tìm thấy tệp âm thanh. Hãy gắn đường dẫn file .mp3 hợp lệ vào biến playlist trong code.";
+          });
+      };
+
+      const pauseTrack = () => {
+        audio.pause();
+        isPlaying = false;
+        playPauseBtn.textContent = "Play";
+        albumDiscEl.classList.remove("is-playing");
+      };
+
+      playPauseBtn.addEventListener("click", () => {
+        if (isPlaying) {
+          pauseTrack();
+        } else {
+          playTrack();
+        }
+      });
+
+      prevBtn.addEventListener("click", () => {
+        currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+        loadTrack(currentTrackIndex);
+        if (isPlaying) playTrack();
+      });
+
+      nextBtn.addEventListener("click", () => {
+        currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+        loadTrack(currentTrackIndex);
+        if (isPlaying) playTrack();
+      });
+
+      audio.addEventListener("loadedmetadata", () => {
+        totalDurationEl.textContent = formatTime(audio.duration);
+      });
+
+      audio.addEventListener("timeupdate", () => {
+        if (audio.duration) {
+          const percent = (audio.currentTime / audio.duration) * 100;
+          progressFill.style.width = `${percent}%`;
+          currentTimeEl.textContent = formatTime(audio.currentTime);
+        }
+      });
+
+      progressBar.addEventListener("click", (e) => {
+        if (!audio.duration) return;
+        const rect = progressBar.getBoundingClientRect();
+        const clickRatio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+        audio.currentTime = clickRatio * audio.duration;
+      });
+
+      audio.addEventListener("ended", () => {
+        currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+        loadTrack(currentTrackIndex);
+        playTrack();
+      });
+
+      loadTrack(currentTrackIndex);
+
+      /* ======================================================================
+         D. HIỆU ỨNG CÁNH HOA RƠI NHẸ NHÀNG (TỐI ƯU HIỆU SUẤT BẰNG CANVAS)
+         ====================================================================== */
+      const canvas = document.getElementById("petal-canvas");
+      const ctx = canvas.getContext("2d");
+
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (!prefersReducedMotion && ctx) {
+        let width = (canvas.width = window.innerWidth);
+        let height = (canvas.height = window.innerHeight);
+
+        const getPetalCount = () => (window.innerWidth < 680 ? 14 : 26);
+
+        const petalColors = [
+          "rgba(249, 198, 222, 0.65)",
+          "rgba(252, 218, 234, 0.72)",
+          "rgba(222, 206, 249, 0.62)",
+          "rgba(244, 168, 206, 0.52)"
+        ];
+
+        class Petal {
+          constructor(initialY = false) {
+            this.reset(initialY);
+          }
+
+          reset(initialY = false) {
+            this.x = Math.random() * width;
+            this.y = initialY ? Math.random() * height : -20;
+            this.size = 6 + Math.random() * 7;
+            this.speedY = 0.55 + Math.random() * 0.85;
+            this.speedX = -0.35 + Math.random() * 0.7;
+            this.swayAmplitude = 0.4 + Math.random() * 0.8;
+            this.swayFrequency = 0.01 + Math.random() * 0.015;
+            this.angle = Math.random() * Math.PI * 2;
+            this.spin = (Math.random() - 0.5) * 0.025;
+            this.phase = Math.random() * Math.PI * 2;
+            this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
+          }
+
+          update() {
+            this.phase += this.swayFrequency;
+            this.y += this.speedY;
+            this.x += this.speedX + Math.sin(this.phase) * this.swayAmplitude;
+            this.angle += this.spin;
+
+            if (this.y > height + 24 || this.x < -30 || this.x > width + 30) {
+              this.reset(false);
+            }
+          }
+
+          draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.angle);
+            ctx.fillStyle = this.color;
+
+            ctx.beginPath();
+            ctx.moveTo(0, -this.size);
+            ctx.bezierCurveTo(
+              this.size * 0.9,
+              -this.size * 0.4,
+              this.size * 0.8,
+              this.size * 0.8,
+              0,
+              this.size
+            );
+            ctx.bezierCurveTo(
+              -this.size * 0.8,
+              this.size * 0.8,
+              -this.size * 0.9,
+              -this.size * 0.4,
+              0,
+              -this.size
+            );
+            ctx.fill();
+            ctx.restore();
+          }
+        }
+
+        let petals = Array.from({ length: getPetalCount() }, () => new Petal(true));
+
+        window.addEventListener("resize", () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+          const targetCount = getPetalCount();
+          if (petals.length !== targetCount) {
+            petals = Array.from({ length: targetCount }, () => new Petal(true));
+          }
+        });
+
+        const animatePetals = () => {
+          ctx.clearRect(0, 0, width, height);
+          for (let i = 0; i < petals.length; i++) {
+            petals[i].update();
+            petals[i].draw();
+          }
+          requestAnimationFrame(animatePetals);
+        };
+
+        animatePetals();
+      }
+    });
+  </script>
+</body>
+</html>
